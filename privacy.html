@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Pick&amp;Prob · Privacy</title><style>
+/* Layout: colonna unica larga 960px; categorie in griglia, tabelle per ruolo con schede Attesi / Valore */
+:root{--bg:#f5f6f8;--surface:#ffffff;--ink:#14213a;--muted:#5d6b82;--line:#dfe3ea;--accent:#D21F3C;--accent-ink:#ffffff;
+--good:#1d7a4f;--bad:#b23a3a;--chip:#eef1f6;
+--display:'Barlow Condensed','Arial Narrow',sans-serif;--body:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1525;--surface:#151f33;--ink:#e8ecf3;--muted:#98a4b8;
+--line:#26324a;--accent:#f07a35;--accent-ink:#10151f;--good:#4fc28a;--bad:#ef7a7a;--chip:#1d2840;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1525;--surface:#151f33;--ink:#e8ecf3;--muted:#98a4b8;--line:#26324a;--accent:#f07a35;
+--accent-ink:#10151f;--good:#4fc28a;--bad:#ef7a7a;--chip:#1d2840;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:960px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));
+padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+header{display:flex;flex-direction:column;gap:6px;border-bottom:3px solid var(--accent);padding-bottom:16px}
+.brand{font-family:var(--display);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-size:14px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,8vw,56px);line-height:1;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:700;font-size:28px;margin:0 0 12px;letter-spacing:.01em}
+.meta{color:var(--muted);font-size:13px}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.cat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.cat .lab{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700}
+.cat .nm{font-family:var(--display);font-size:26px;font-weight:700;line-height:1.05}
+.cat .sub{color:var(--muted);font-size:13px}
+.cat .nums{display:flex;gap:16px;font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:13px}
+.cat .nums b{font-size:20px;font-family:var(--display)}
+.cat p{margin:4px 0 0;font-size:14px}
+.best{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.role h3{font-family:var(--display);font-size:20px;margin:0 0 6px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.prow{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line)}
+.prow .n{font-weight:600;min-width:0}.prow .t{color:var(--muted);font-size:12px;display:block;font-weight:400}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.big{font-family:var(--display);font-size:22px;font-weight:700}
+.tabs{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.tabs button{font:inherit;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 14px;border-radius:999px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;margin-bottom:14px}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:640px}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.pos{color:var(--good)}.neg{color:var(--bad)}
+.chip{display:inline-block;background:var(--chip);border-radius:6px;padding:0 6px;font-size:12px;color:var(--muted)}
+.aff{display:inline-block;min-width:3.2em;text-align:center;border-radius:999px;padding:0 8px;font-weight:600;font-family:var(--mono);font-size:12px}
+.aff.hi{background:color-mix(in srgb,var(--good) 18%,transparent);color:var(--good)}.aff.mid{background:var(--chip);color:var(--ink)}.aff.lo{background:color-mix(in srgb,var(--bad) 15%,transparent);color:var(--bad)}
+.ok{color:var(--good);font-weight:700}.ko{color:var(--bad);font-weight:700}
+.method{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;max-width:70ch}
+.method li{margin-bottom:6px}.foot{color:var(--muted);font-size:12px;max-width:70ch}
+.sitenav{display:flex;gap:18px;flex-wrap:wrap;font-weight:600;font-size:14px;padding-block:10px}
+.sitenav a{color:var(--accent);text-decoration:none}.sitenav a:hover{text-decoration:underline}
+.legal{max-width:70ch;line-height:1.6}.legal h2{margin-top:28px}:root{--display:'Arial Narrow','Segoe UI',Arial,sans-serif;--body:system-ui,'Segoe UI',Arial,sans-serif;--mono:Consolas,ui-monospace,monospace}body{margin:0}[hidden]{display:none!important}</style></head><body><div class="wrap"><header><div class="brand"><img src="img/logo.png" alt="" width="40" height="40" style="vertical-align:middle;margin-right:10px;border-radius:50%">Pick&amp;Prob</div><nav class="sitenav"><a href="index.html">Giornata</a><a href="metodo.html">Metodo</a>
+<a href="privacy.html">Privacy</a><a href="note-legali.html">Note legali</a></nav></header><section class="legal">
+<h1>Informativa privacy</h1><p>Ultimo aggiornamento: 19/11/2026</p>
+<h2>Titolare</h2><p>Salvatore Vicedomini (Pick&amp;Prob), contatto: pickandprob@gmail.com.</p>
+<h2>Dati raccolti da questo sito</h2><p>Questo sito non usa cookie, né strumenti di analisi o di profilazione,
+non ha moduli e non raccoglie dati personali. Non carica caratteri o contenuti da servizi di terzi.</p>
+<h2>Hosting</h2><p>Il sito è ospitato da GitHub Pages (GitHub, Inc.), che registra l'indirizzo IP dei visitatori
+per motivi di sicurezza, secondo la propria informativa privacy. Il titolare non ha accesso a questi dati.</p>
+<h2>Instagram</h2><p>Se ci segui o ci scrivi su Instagram, i dati sono trattati da Meta secondo le sue regole;
+i messaggi che ci mandi li usiamo solo per risponderti.</p>
+<h2>I tuoi diritti</h2><p>Puoi chiedere accesso, rettifica o cancellazione dei dati che ci riguardano scrivendo
+all'indirizzo sopra, e puoi presentare reclamo al Garante per la protezione dei dati personali (garanteprivacy.it).</p></section><p class="foot">Progetto indipendente, non affiliato a Dunkest ne&#x27; alla NBA. Proiezioni statistiche, non certezze. Prezzi dalla tabella pubblica di Dunkest al momento dell&#x27;aggiornamento.</p></div></body></html>
