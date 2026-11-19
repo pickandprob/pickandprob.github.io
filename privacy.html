@@ -35,7 +35,7 @@ h2{font-family:var(--display);font-weight:700;font-size:28px;margin:0 0 12px;let
 .tabs button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;margin-bottom:14px}
-table{border-collapse:collapse;width:100%;font-size:13px;min-width:640px}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:560px}
 th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--line)}
 td{padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}tr:last-child td{border-bottom:0}
 td.r,th.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
@@ -44,6 +44,10 @@ td.r,th.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-
 .aff{display:inline-block;min-width:3.2em;text-align:center;border-radius:999px;padding:0 8px;font-weight:600;font-family:var(--mono);font-size:12px}
 .aff.hi{background:color-mix(in srgb,var(--good) 18%,transparent);color:var(--good)}.aff.mid{background:var(--chip);color:var(--ink)}.aff.lo{background:color-mix(in srgb,var(--bad) 15%,transparent);color:var(--bad)}
 .ok{color:var(--good);font-weight:700}.ko{color:var(--bad);font-weight:700}
+.legend{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:12px 14px;font-size:13px;margin-bottom:14px;max-width:80ch}
+.opp{font-weight:600;color:var(--muted)}.opp.pos{color:var(--good)}.opp.neg{color:var(--bad)}
+td .t{display:block;color:var(--muted);font-size:12px;font-weight:400}
+.chip.st{background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good)}.chip.bn{background:color-mix(in srgb,var(--bad) 14%,transparent);color:var(--bad)}
 .method{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;max-width:70ch}
 .method li{margin-bottom:6px}.foot{color:var(--muted);font-size:12px;max-width:70ch}
 .sitenav{display:flex;gap:18px;flex-wrap:wrap;font-weight:600;font-size:14px;padding-block:10px}
